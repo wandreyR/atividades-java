@@ -1,0 +1,212 @@
+exercicios
+ 
+1
+Usando a classe BufferedReader para entrada de dados, crie uma classe que receba o valor 
+de um produto e a porcentagem de desconto, calcule e mostre o valor do desconto e o valor
+ do produto com o desconto. Observação: o valor do desconto é calculado por meio da fórmula:
+ valor do desconto = valor do produto * percentual de desconto /100.
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class DescontoProduto {
+    public static void main(String[] args) {
+        // BufferedReader para entrada de dados
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        
+        try {
+            // Leitura do valor do produto
+            System.out.print("Digite o valor do produto: ");
+            double valorProduto = Double.parseDouble(reader.readLine());
+
+            // Leitura do percentual de desconto
+            System.out.print("Digite o percentual de desconto: ");
+            double percentualDesconto = Double.parseDouble(reader.readLine());
+
+            // Cálculo do valor do desconto
+            double valorDesconto = valorProduto * percentualDesconto / 100;
+
+            // Cálculo do valor final com o desconto
+            double valorComDesconto = valorProduto - valorDesconto;
+
+            // Exibição dos resultados
+            System.out.printf("Valor do desconto: R$ %.2f\n", valorDesconto);
+            System.out.printf("Valor do produto com desconto: R$ %.2f\n", valorComDesconto);
+
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Erro na entrada de dados. Certifique-se de digitar números válidos.");
+        }
+    }
+}
+
+
+2-Usando a classe Scanner para entrada de dados, faça uma classe que receba dois valores inteiros.
+ O primeiro valor corresponde à quantidade de pontos do líder do campeonato brasileiro de futebol.
+ O segundo valor corresponde à quantidade de pontos do time lanterna. 
+Considerando que cada vitória vale 3 pontos, elabore uma classe que calcule o número de vitórias necessárias para que o time lanterna alcance (ou ultrapasse) o líder.
+ Por exemplo, supondo que as quantidades de ponto fornecidas sejam 40 e 22, então o número de vitórias apresentada na saída deverá ser 6, pois (40 - 22)/3 = 6;
+
+resposta:
+
+import java.util.Scanner;
+
+public class CampeonatoBrasileiro {
+    public static void main(String[] args) {
+        // Criação do objeto Scanner para leitura de dados
+        Scanner scanner = new Scanner(System.in);
+
+        // Solicita os pontos do líder
+        System.out.print("Digite os pontos do líder: ");
+        int pontosLider = scanner.nextInt();
+
+        // Solicita os pontos do lanterna
+        System.out.print("Digite os pontos do lanterna: ");
+        int pontosLanterna = scanner.nextInt();
+
+        // Calcula a diferença de pontos
+        int diferenca = pontosLider - pontosLanterna;
+
+        // Calcula o número de vitórias necessárias (cada vitória vale 3 pontos)
+        int vitoriasNecessarias = diferenca / 3;
+
+        // Exibe o resultado
+        System.out.println("Vitórias necessárias para alcançar o líder: " + vitoriasNecessarias);
+
+        // Fecha o Scanner
+        scanner.close();
+    }
+}
+
+
+3-
+O Imposto sobre a Transmissão de Bens Imóveis (ITBI) é aplicado sobre o valor de um imóvel a ser negociado. 
+A base de cálculo do ITBI (o valor a ser considerado no cálculo) será o maior valor entre o valor de transação (o valor negociado) e o valor venal de referência 
+(fornecido pela Prefeitura). Com base nisso, elabore uma classe que receba o valor da transação, o valor venal e o percentual de imposto. Após isso, 
+encontre o maior valor e aplique o percentual sobre ele. Ao final, apresente o valor do imposto a ser pago. Observação:
+ o valor do imposto a ser pago é calculado por meio da fórmula: valor do imposto = maior valor * percentual / 100. 
+Para entrada e saída de dados utilize a classe JOptionPane.
+
+import javax.swing.JOptionPane;
+
+public class CalculoITBI {
+    public static void main(String[] args) {
+        // Entrada do valor da transação
+        double valorTransacao = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor da transação do imóvel:"));
+
+        // Entrada do valor venal do imóvel
+        double valorVenal = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor venal do imóvel:"));
+
+        // Entrada do percentual do imposto
+        double percentual = Double.parseDouble(JOptionPane.showInputDialog("Digite o percentual do ITBI:"));
+
+        // Determina o maior valor entre valor de transação e valor venal
+        double baseCalculo = Math.max(valorTransacao, valorVenal);
+
+        // Calcula o valor do imposto (maior valor * percentual / 100)
+        double valorImposto = baseCalculo * percentual / 100;
+
+        // Exibe o valor do imposto a ser pago com duas casas decimais
+        JOptionPane.showMessageDialog(null, String.format("Valor do ITBI a ser pago: R$ %.2f", valorImposto));
+    }
+}
+
+4-Usando a classe JOptionPane para entrada de dados, elabore uma classe que receba a nota de duas provas e de um trabalho.
+ Calcule e mostre a média e o resultado final (aprovado ou reprovado). Para calcular a média utilize a fórmula seguinte: 
+média = (nota da prova 1 + nota da prova 2 + nota do trabalho)/3. Considere que a média mínima para aprovação é 6.
+
+resposta:
+import javax.swing.JOptionPane;
+
+public class MediaComJOptionPane {
+    public static void main(String[] args) {
+        // Entrada da nota da primeira prova
+        String inputNota1 = JOptionPane.showInputDialog("Digite a nota da prova 1:");
+        double nota1 = Double.parseDouble(inputNota1);
+
+        // Entrada da nota da segunda prova
+        String inputNota2 = JOptionPane.showInputDialog("Digite a nota da prova 2:");
+        double nota2 = Double.parseDouble(inputNota2);
+
+        // Entrada da nota do trabalho
+        String inputTrabalho = JOptionPane.showInputDialog("Digite a nota do trabalho:");
+        double notaTrabalho = Double.parseDouble(inputTrabalho);
+
+        // Cálculo da média
+        double media = (nota1 + nota2 + notaTrabalho) / 3;
+
+        // Verificação do resultado final com base na média
+        String resultado;
+        if (media >= 6.0) {
+            resultado = "Aprovado";
+        } else {
+            resultado = "Reprovado";
+        }
+
+        // Exibição do resultado final com a média formatada
+        String mensagem = String.format("Média: %.2f\nResultado: %s", media, resultado);
+        JOptionPane.showMessageDialog(null, mensagem);
+    }
+}
+
+5-Considere a seguinte informação a respeito do cálculo da aposentadoria. 
+Para se aposentar por idade, as mulheres precisam ter atingido 60 anos de idade e os homens 65. 
+Já na aposentadoria por tempo de contribuição, o tempo mínimo exigido é de 30 anos para as mulheres e de 35 anos para os homens. 
+Com base nessas informações , elabore uma classe que receba a idade de uma pessoa, seu sexo e a quantidade de anos de contribuição. 
+A seguir calcule a quantidade de anos que falta de contribuição para se aposentar, ou então emita a mensagem: "Você já tem o direito a aposentadoria".
+
+resposta :
+import java.util.Scanner;
+
+public class CalculoAposentadoria {
+    public static void main(String[] args) {
+        // Criação do Scanner para leitura de dados do usuário
+        Scanner scanner = new Scanner(System.in);
+
+        // Solicita a idade do usuário
+        System.out.print("Digite sua idade: ");
+        int idade = scanner.nextInt();
+
+        // Solicita o sexo do usuário (M ou F)
+        System.out.print("Digite seu sexo (M/F): ");
+        String sexo = scanner.next().toUpperCase(); // Converte para maiúsculo
+
+        // Solicita os anos de contribuição
+        System.out.print("Digite seu tempo de contribuição (anos): ");
+        int contribuicao = scanner.nextInt();
+
+        // Verifica se a pessoa pode se aposentar por idade
+        boolean podeAposentarPorIdade = 
+            (sexo.equals("F") && idade >= 60) || 
+            (sexo.equals("M") && idade >= 65);
+
+        // Verifica se a pessoa pode se aposentar por tempo de contribuição
+        boolean podeAposentarPorTempo = 
+            (sexo.equals("F") && contribuicao >= 30) || 
+            (sexo.equals("M") && contribuicao >= 35);
+
+        // Se atender a qualquer uma das condições, já pode se aposentar
+        if (podeAposentarPorIdade || podeAposentarPorTempo) {
+            System.out.println("Você já tem o direito a aposentadoria.");
+        } else {
+            // Calcula quantos anos faltam para atingir a idade ou tempo
+            int anosFaltantes = 0;
+
+            if (sexo.equals("F")) {
+                // Calcula o mínimo entre os anos que faltam de idade e de contribuição
+                anosFaltantes = Math.min(60 - idade, 30 - contribuicao);
+            } else if (sexo.equals("M")) {
+                anosFaltantes = Math.min(65 - idade, 35 - contribuicao);
+            }
+
+            // Garante que o valor não fique negativo
+            if (anosFaltantes < 0) anosFaltantes = 0;
+
+            // Exibe quantos anos faltam
+            System.out.println("Faltam " + anosFaltantes + " ano(s) para você se aposentar.");
+        }
+
+        // Fecha o Scanner
+        scanner.close();
+    }
+}
