@@ -1,0 +1,775 @@
+1 - Crie uma lista (ArrayList) de 5 cores e exiba todas usando o laço for-each.
+
+Tarefas:
+
+Importar java.util.ArrayList
+Criar um ArrayList<String> chamado cores
+Adicionar 5 cores diferentes
+Exibir todas as cores usando for (String cor : cores)
+
+Resposta:
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Criando a lista de cores
+        ArrayList<String> cores = new ArrayList<>();
+
+        // Adicionando 5 cores
+        cores.add("Azul");
+        cores.add("Verde");
+        cores.add("Vermelho");
+        cores.add("Amarelo");
+        cores.add("Preto");
+
+        // Exibindo as cores com for-each
+        for (String cor : cores) {
+            System.out.println(cor);
+        }
+    }
+}
+
+2 - Crie um programa que adiciona os números de 1 a 10 em uma lista e depois calcula e exibe a soma total.
+
+Tarefas:
+
+Criar um ArrayList<Integer>
+Adicionar os números de 1 a 10 usando um laço for
+Calcular a soma percorrendo a lista
+Exibir: "A soma dos números é: X"
+
+Resposta: 
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Criando a lista de números
+        ArrayList<Integer> numeros = new ArrayList<>();
+
+        // Adicionando os números de 1 a 10
+        for (int i = 1; i <= 10; i++) {
+            numeros.add(i);
+        }
+
+        // Calculando a soma
+        int soma = 0;
+
+        for (int numero : numeros) {
+            soma += numero;
+        }
+
+        // Exibindo o resultado
+        System.out.println("A soma dos números é: " + soma);
+    }
+}
+
+3 - Faça um programa que recebe nomes do usuário (via Scanner) até que ele digite "fim". Depois exiba todos os nomes cadastrados.
+
+Tarefas:
+
+Criar um ArrayList<String> para armazenar os nomes
+Usar um laço while (true) para ler nomes
+Se o usuário digitar "fim", interromper o laço com break
+Caso contrário, adicionar o nome à lista
+Após sair, exibir todos os nomes (um por linha)
+
+Resposta:
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Criando a lista de nomes
+        ArrayList<String> nomes = new ArrayList<>();
+
+        // Criando o Scanner
+        Scanner scanner = new Scanner(System.in);
+
+        // Lendo nomes até o usuário digitar "fim"
+        while (true) {
+            System.out.print("Digite um nome (ou 'fim' para encerrar): ");
+            String nome = scanner.nextLine();
+
+            // Verifica se o usuário quer encerrar
+            if (nome.equalsIgnoreCase("fim")) {
+                break;
+            }
+
+            // Adiciona o nome à lista
+            nomes.add(nome);
+        }
+
+        // Exibindo os nomes cadastrados
+        System.out.println("\nNomes cadastrados:");
+
+        for (String nome : nomes) {
+            System.out.println(nome);
+        }
+
+        scanner.close();
+    }
+}
+
+4 - Crie uma lista de números inteiros e remova todos os números menores que 10.
+
+Tarefas:
+
+Criar uma lista com os valores: 5, 15, 3, 20, 8, 25, 2, 30
+Percorrer a lista (cuidado com a remoção durante iteração)
+Remover todos os elementos que são menores que 10
+Exibir a lista antes e depois da remoção
+Dica: Para remover durante iteração, percorra a lista de trás para frente:
+
+Resposta:
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Criando a lista de números
+        ArrayList<Integer> numeros = new ArrayList<>();
+
+        numeros.add(5);
+        numeros.add(15);
+        numeros.add(3);
+        numeros.add(20);
+        numeros.add(8);
+        numeros.add(25);
+        numeros.add(2);
+        numeros.add(30);
+
+        // Exibindo a lista antes da remoção
+        System.out.println("Lista antes da remoção:");
+        System.out.println(numeros);
+
+        // Removendo números menores que 10
+        for (int i = numeros.size() - 1; i >= 0; i--) {
+            if (numeros.get(i) < 10) {
+                numeros.remove(i);
+            }
+        }
+
+        // Exibindo a lista depois da remoção
+        System.out.println("Lista depois da remoção:");
+        System.out.println(numeros);
+    }
+}
+
+5 - Faça um cadastro de produtos com nome e preço. Depois calcule o valor total do carrinho.
+
+Tarefas:
+
+Criar um ArrayList<String> para os nomes dos produtos
+Criar um ArrayList<Double> para os preços dos produtos
+Adicionar pelo menos 3 produtos manualmente (ou via teclado)
+Calcular o valor total do carrinho (soma dos preços)
+Exibir um relatório:
+Produto 1: [nome] - R$ [preço]
+Produto 2: [nome] - R$ [preço]
+...
+Total: R$ [soma]
+
+Resposta: 
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Lista de nomes dos produtos
+        ArrayList<String> produtos = new ArrayList<>();
+
+        // Lista de preços dos produtos
+        ArrayList<Double> precos = new ArrayList<>();
+
+        // Adicionando produtos
+        produtos.add("Notebook");
+        precos.add(3500.00);
+
+        produtos.add("Mouse");
+        precos.add(120.50);
+
+        produtos.add("Teclado");
+        precos.add(250.90);
+
+        // Calculando o total
+        double total = 0;
+
+        for (double preco : precos) {
+            total += preco;
+        }
+
+        // Exibindo relatório
+        System.out.println("RELATÓRIO DO CARRINHO\n");
+
+        for (int i = 0; i < produtos.size(); i++) {
+            System.out.println(
+                "Produto " + (i + 1) + ": " +
+                produtos.get(i) +
+                " - R$ " + precos.get(i)
+            );
+        }
+
+        System.out.println("\nTotal: R$ " + total);
+    }
+}
+
+5 - Crie uma agenda de contatos onde cada contato tem nome e telefone. Permita as operações:
+
+Adicionar contato
+Buscar contato (por nome)
+Remover contato (por nome)
+Listar todos os contatos
+Sair
+Tarefas:
+
+Criar dois ArrayLists: nomes e telefones (mesmo índice para o mesmo contato)
+Usar um menu com do-while e switch-case
+Implementar cada opção:
+Adicionar: pedir nome e telefone, adicionar às listas
+Buscar: pedir nome, procurar e exibir telefone
+Remover: pedir nome, encontrar a posição e remover das duas listas
+Listar: exibir todos os contatos (número, nome, telefone)
+
+Resposta: 
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Listas de contatos
+        ArrayList<String> nomes = new ArrayList<>();
+        ArrayList<String> telefones = new ArrayList<>();
+
+        int opcao;
+
+        do {
+            // Menu
+            System.out.println("\n===== AGENDA DE CONTATOS =====");
+            System.out.println("1 - Adicionar contato");
+            System.out.println("2 - Buscar contato");
+            System.out.println("3 - Remover contato");
+            System.out.println("4 - Listar contatos");
+            System.out.println("5 - Sair");
+            System.out.print("Escolha uma opção: ");
+
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Limpar buffer
+
+            switch (opcao) {
+
+                case 1:
+                    // Adicionar contato
+                    System.out.print("Digite o nome: ");
+                    String nome = scanner.nextLine();
+
+                    System.out.print("Digite o telefone: ");
+                    String telefone = scanner.nextLine();
+
+                    nomes.add(nome);
+                    telefones.add(telefone);
+
+                    System.out.println("Contato adicionado com sucesso!");
+                    break;
+
+                case 2:
+                    // Buscar contato
+                    System.out.print("Digite o nome para buscar: ");
+                    String busca = scanner.nextLine();
+
+                    boolean encontrado = false;
+
+                    for (int i = 0; i < nomes.size(); i++) {
+                        if (nomes.get(i).equalsIgnoreCase(busca)) {
+                            System.out.println("Telefone: " + telefones.get(i));
+                            encontrado = true;
+                            break;
+                        }
+                    }
+
+                    if (!encontrado) {
+                        System.out.println("Contato não encontrado.");
+                    }
+
+                    break;
+
+                case 3:
+                    // Remover contato
+                    System.out.print("Digite o nome para remover: ");
+                    String remover = scanner.nextLine();
+
+                    boolean removido = false;
+
+                    for (int i = 0; i < nomes.size(); i++) {
+                        if (nomes.get(i).equalsIgnoreCase(remover)) {
+
+                            nomes.remove(i);
+                            telefones.remove(i);
+
+                            System.out.println("Contato removido com sucesso!");
+                            removido = true;
+                            break;
+                        }
+                    }
+
+                    if (!removido) {
+                        System.out.println("Contato não encontrado.");
+                    }
+
+                    break;
+
+                case 4:
+                    // Listar contatos
+                    System.out.println("\n===== LISTA DE CONTATOS =====");
+
+                    if (nomes.isEmpty()) {
+                        System.out.println("Nenhum contato cadastrado.");
+                    } else {
+                        for (int i = 0; i < nomes.size(); i++) {
+                            System.out.println(
+                                (i + 1) + " - " +
+                                nomes.get(i) +
+                                " | Telefone: " +
+                                telefones.get(i)
+                            );
+                        }
+                    }
+
+                    break;
+
+                case 5:
+                    // Sair
+                    System.out.println("Encerrando o programa...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida!");
+            }
+
+        } while (opcao != 5);
+
+        scanner.close();
+    }
+}
+
+7 - Crie um gerenciador de tarefas onde cada tarefa tem descrição (String) e prioridade (1 = Alta, 2 = Média, 3 = Baixa).
+
+Tarefas:
+
+Criar duas listas: descricoes (String) e prioridades (Integer)
+Implementar as operações:
+Adicionar tarefa (descrição + prioridade)
+Listar tarefas por prioridade (primeiro as prioridade 1, depois 2, depois 3)
+Marcar tarefa como concluída (remover da lista)
+Sair
+
+Resposta: 
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Listas das tarefas
+        ArrayList<String> descricoes = new ArrayList<>();
+        ArrayList<Integer> prioridades = new ArrayList<>();
+
+        int opcao;
+
+        do {
+            // Menu
+            System.out.println("\n===== GERENCIADOR DE TAREFAS =====");
+            System.out.println("1 - Adicionar tarefa");
+            System.out.println("2 - Listar tarefas");
+            System.out.println("3 - Concluir tarefa");
+            System.out.println("4 - Sair");
+            System.out.print("Escolha uma opção: ");
+
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Limpar buffer
+
+            switch (opcao) {
+
+                case 1:
+                    // Adicionar tarefa
+                    System.out.print("Digite a descrição da tarefa: ");
+                    String descricao = scanner.nextLine();
+
+                    System.out.print("Digite a prioridade (1 = Alta, 2 = Média, 3 = Baixa): ");
+                    int prioridade = scanner.nextInt();
+                    scanner.nextLine();
+
+                    descricoes.add(descricao);
+                    prioridades.add(prioridade);
+
+                    System.out.println("Tarefa adicionada com sucesso!");
+                    break;
+
+                case 2:
+                    // Listar tarefas por prioridade
+                    System.out.println("\n===== LISTA DE TAREFAS =====");
+
+                    if (descricoes.isEmpty()) {
+                        System.out.println("Nenhuma tarefa cadastrada.");
+                    } else {
+
+                        for (int p = 1; p <= 3; p++) {
+
+                            if (p == 1) {
+                                System.out.println("\n--- Prioridade Alta ---");
+                            } else if (p == 2) {
+                                System.out.println("\n--- Prioridade Média ---");
+                            } else {
+                                System.out.println("\n--- Prioridade Baixa ---");
+                            }
+
+                            for (int i = 0; i < descricoes.size(); i++) {
+                                if (prioridades.get(i) == p) {
+                                    System.out.println(
+                                        (i + 1) + " - " + descricoes.get(i)
+                                    );
+                                }
+                            }
+                        }
+                    }
+
+                    break;
+
+                case 3:
+                    // Concluir tarefa
+                    System.out.println("\n===== TAREFAS =====");
+
+                    if (descricoes.isEmpty()) {
+                        System.out.println("Nenhuma tarefa para concluir.");
+                    } else {
+
+                        for (int i = 0; i < descricoes.size(); i++) {
+                            System.out.println(
+                                (i + 1) + " - " +
+                                descricoes.get(i) +
+                                " (Prioridade " + prioridades.get(i) + ")"
+                            );
+                        }
+
+                        System.out.print("Digite o número da tarefa concluída: ");
+                        int indice = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (indice >= 1 && indice <= descricoes.size()) {
+
+                            descricoes.remove(indice - 1);
+                            prioridades.remove(indice - 1);
+
+                            System.out.println("Tarefa concluída e removida!");
+                        } else {
+                            System.out.println("Número inválido!");
+                        }
+                    }
+
+                    break;
+
+                case 4:
+                    // Sair
+                    System.out.println("Encerrando o programa...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida!");
+            }
+
+        } while (opcao != 4);
+
+        scanner.close();
+    }
+}
+8 - Crie um programa que recebe números do usuário até que ele digite 0 e armazena todos em uma lista. Depois, remova todos os números duplicados, mantendo apenas a primeira ocorrência de cada número.
+
+Exemplo:
+
+Entrada: 5, 3, 5, 2, 5, 7, 3, 8
+Lista final: [5, 3, 2, 7, 8]
+Dica: Verifique para cada elemento se ele já apareceu antes na lista.
+
+Resposta: 
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Lista original
+        ArrayList<Integer> numeros = new ArrayList<>();
+
+        // Entrada de números
+        System.out.println("Digite números (0 para encerrar):");
+
+        while (true) {
+            int numero = scanner.nextInt();
+
+            if (numero == 0) {
+                break;
+            }
+
+            numeros.add(numero);
+        }
+
+        // Removendo duplicados
+        ArrayList<Integer> semDuplicados = new ArrayList<>();
+
+        for (int numero : numeros) {
+
+            // Verifica se o número já existe na nova lista
+            if (!semDuplicados.contains(numero)) {
+                semDuplicados.add(numero);
+            }
+        }
+
+        // Exibindo resultados
+        System.out.println("\nLista original:");
+        System.out.println(numeros);
+
+        System.out.println("\nLista sem duplicados:");
+        System.out.println(semDuplicados);
+
+        scanner.close();
+    }
+}
+
+9 - Use LinkedList para simular uma fila de atendimento (FIFO - First In, First Out).
+
+Operações:
+
+Adicionar pessoa à fila (enfileirar)
+Chamar próxima pessoa (desenfileirar) - remove e exibe o nome
+Exibir quantas pessoas estão na fila
+Exibir a fila completa
+Sair
+Dica: LinkedList possui métodos addLast() (adicionar no final) e removeFirst() (remover do início).
+
+Resposta: 
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Criando a fila de atendimento
+        LinkedList<String> fila = new LinkedList<>();
+
+        int opcao;
+
+        do {
+            // Menu
+            System.out.println("\n===== FILA DE ATENDIMENTO =====");
+            System.out.println("1 - Adicionar pessoa à fila");
+            System.out.println("2 - Chamar próxima pessoa");
+            System.out.println("3 - Exibir quantidade de pessoas");
+            System.out.println("4 - Exibir fila completa");
+            System.out.println("5 - Sair");
+            System.out.print("Escolha uma opção: ");
+
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Limpar buffer
+
+            switch (opcao) {
+
+                case 1:
+                    // Adicionar pessoa
+                    System.out.print("Digite o nome da pessoa: ");
+                    String nome = scanner.nextLine();
+
+                    fila.addLast(nome);
+
+                    System.out.println(nome + " entrou na fila.");
+                    break;
+
+                case 2:
+                    // Chamar próxima pessoa
+                    if (fila.isEmpty()) {
+                        System.out.println("A fila está vazia.");
+                    } else {
+                        String atendido = fila.removeFirst();
+
+                        System.out.println("Chamando: " + atendido);
+                    }
+                    break;
+
+                case 3:
+                    // Quantidade de pessoas
+                    System.out.println("Quantidade de pessoas na fila: " + fila.size());
+                    break;
+
+                case 4:
+                    // Exibir fila completa
+                    System.out.println("\n===== FILA ATUAL =====");
+
+                    if (fila.isEmpty()) {
+                        System.out.println("A fila está vazia.");
+                    } else {
+                        for (int i = 0; i < fila.size(); i++) {
+                            System.out.println((i + 1) + " - " + fila.get(i));
+                        }
+                    }
+                    break;
+
+                case 5:
+                    // Sair
+                    System.out.println("Encerrando o programa...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida!");
+            }
+
+        } while (opcao != 5);
+
+        scanner.close();
+    }
+}
+10 - Crie um programa de lista de tarefas que salva e carrega as tarefas de um arquivo.
+
+Tarefas:
+
+Ao iniciar, carregar tarefas de um arquivo tarefas.txt
+Operações: adicionar, remover, listar, concluir
+Ao sair, salvar todas as tarefas no arquivo
+Dica: Use FileWriter e BufferedReader para ler/escrever o arquivo, cada tarefa em uma linha.
+
+Resposta: 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    static final String ARQUIVO = "tarefas.txt";
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        ArrayList<String> tarefas = new ArrayList<>();
+
+        // Carregar tarefas do arquivo ao iniciar
+        carregarTarefas(tarefas);
+
+        int opcao;
+
+        do {
+            System.out.println("\n===== LISTA DE TAREFAS =====");
+            System.out.println("1 - Adicionar tarefa");
+            System.out.println("2 - Listar tarefas");
+            System.out.println("3 - Concluir (remover) tarefa");
+            System.out.println("4 - Sair");
+            System.out.print("Escolha uma opção: ");
+
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // limpar buffer
+
+            switch (opcao) {
+
+                case 1:
+                    // Adicionar tarefa
+                    System.out.print("Digite a tarefa: ");
+                    String tarefa = scanner.nextLine();
+
+                    tarefas.add(tarefa);
+                    System.out.println("Tarefa adicionada!");
+                    break;
+
+                case 2:
+                    // Listar tarefas
+                    System.out.println("\n===== TAREFAS =====");
+
+                    if (tarefas.isEmpty()) {
+                        System.out.println("Nenhuma tarefa cadastrada.");
+                    } else {
+                        for (int i = 0; i < tarefas.size(); i++) {
+                            System.out.println((i + 1) + " - " + tarefas.get(i));
+                        }
+                    }
+                    break;
+
+                case 3:
+                    // Concluir tarefa (remover)
+                    System.out.println("\n===== TAREFAS =====");
+
+                    if (tarefas.isEmpty()) {
+                        System.out.println("Nenhuma tarefa para remover.");
+                    } else {
+
+                        for (int i = 0; i < tarefas.size(); i++) {
+                            System.out.println((i + 1) + " - " + tarefas.get(i));
+                        }
+
+                        System.out.print("Digite o número da tarefa concluída: ");
+                        int indice = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (indice >= 1 && indice <= tarefas.size()) {
+                            tarefas.remove(indice - 1);
+                            System.out.println("Tarefa removida!");
+                        } else {
+                            System.out.println("Índice inválido!");
+                        }
+                    }
+                    break;
+
+                case 4:
+                    // Sair (salvar no arquivo)
+                    salvarTarefas(tarefas);
+                    System.out.println("Tarefas salvas. Encerrando...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida!");
+            }
+
+        } while (opcao != 4);
+
+        scanner.close();
+    }
+
+    // Carregar tarefas do arquivo
+    public static void carregarTarefas(ArrayList<String> tarefas) {
+        try (BufferedReader br = new BufferedReader(new FileReader(ARQUIVO))) {
+
+            String linha;
+
+            while ((linha = br.readLine()) != null) {
+                tarefas.add(linha);
+            }
+
+        } catch (FileNotFoundException e) {
+            // Arquivo ainda não existe (primeira execução)
+            System.out.println("Nenhum arquivo encontrado. Iniciando lista vazia.");
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar tarefas.");
+        }
+    }
+
+    // Salvar tarefas no arquivo
+    public static void salvarTarefas(ArrayList<String> tarefas) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ARQUIVO))) {
+
+            for (String tarefa : tarefas) {
+                bw.write(tarefa);
+                bw.newLine();
+            }
+
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar tarefas.");
+        }
+    }
+}
